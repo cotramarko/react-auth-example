@@ -40,6 +40,10 @@ app.get('/api/home', function (req, res) {
   res.send('Welcome!');
 });
 
+app.get('/api/test', function (req, res) {
+  res.send(process.env.PUBLIC_PATH);
+});
+
 app.get('/api/secret', withAuth, function (req, res) {
   res.send('The password is potato');
 });
