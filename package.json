@@ -24,7 +24,7 @@
     "eject": "react-scripts eject",
     "server": "node server.js",
     "server-dev": "nodemon server.js",
-    "all": "node server.js & react-scripts start"
+    "all": "react-scripts start & node server.js"
   },
   "proxy": "http://localhost:8080",
   "devDependencies": {
