@@ -29,11 +29,11 @@ mongoose.connect(process.env.MONGODB_URI || mongo_uri, { useNewUrlParser: true }
   }
 });
 
-app.use(express.static(path.normalize(path.join(__dirname, 'public'))));
-
+//app.use(express.static(path.normalize(path.join(__dirname, 'public'))));
+app.use("/", express.static(path.join(__dirname, "build")));
 
 app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  res.sendFile(path.resolve(__dirname, "build", "index.html"));
 });
 
 app.get('/api/home', function (req, res) {
