@@ -7,6 +7,7 @@ const mongoose = require('mongoose');
 const User = require('./models/User');
 const Entry = require('./models/Entry')
 const withAuth = require('./middleware');
+require('dotenv').config();
 
 const app = express();
 
