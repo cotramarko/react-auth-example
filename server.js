@@ -18,8 +18,8 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 
 //const mongo_uri = 'mongodb://localhost/react-auth'; // TODO: Replace with production uri
-const mongo_uri = 'mongodb://localhost/badmini'; // TODO: Replace with production uri
-mongoose.connect(process.env.MONGODB_URI || mongo_uri, { useNewUrlParser: true }, function (err) {
+//const mongo_uri = 'mongodb://localhost/badmini'; // TODO: Replace with production uri
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true }, function (err) {
   if (err) {
     throw err;
   } else {
@@ -118,5 +118,5 @@ app.get('/checkToken', withAuth, function (req, res) {
   res.sendStatus(200);
 });
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 5000;
 app.listen(port);
