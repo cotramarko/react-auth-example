@@ -5,14 +5,16 @@
   "dependencies": {
     "bcrypt": "^3.0.0",
     "body-parser": "^1.18.3",
+    "bootstrap": "^4.4.1",
     "cookie-parser": "^1.4.3",
     "express": "^4.16.3",
     "jsonwebtoken": "^8.3.0",
     "mongoose": "^5.7.12",
     "react": "^16.12.0",
+    "react-bootstrap": "^1.0.0-beta.16",
     "react-dom": "^16.12.0",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "^3.2.0"
+    "react-scripts": "^3.3.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -20,7 +22,8 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "server": "node server.js",
-    "server-dev": "nodemon server.js"
+    "server-dev": "nodemon server.js",
+    "all": "node server.js & react-scripts start"
   },
   "proxy": "http://localhost:8080",
   "devDependencies": {

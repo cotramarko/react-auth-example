@@ -8,10 +8,10 @@ const UserSchema = new mongoose.Schema({
   password: { type: String, required: true }
 });
 
-UserSchema.pre('save', function(next) {
+UserSchema.pre('save', function (next) {
   if (this.isNew || this.isModified('password')) {
     const document = this;
-    bcrypt.hash(this.password, saltRounds, function(err, hashedPassword) {
+    bcrypt.hash(this.password, saltRounds, function (err, hashedPassword) {
       if (err) {
         next(err);
       } else {
@@ -24,8 +24,8 @@ UserSchema.pre('save', function(next) {
   }
 });
 
-UserSchema.methods.isCorrectPassword = function(password, callback) {
-  bcrypt.compare(password, this.password, function(err, same) {
+UserSchema.methods.isCorrectPassword = function (password, callback) {
+  bcrypt.compare(password, this.password, function (err, same) {
     if (err) {
       callback(err);
     } else {
