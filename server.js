@@ -9,6 +9,8 @@ const Entry = require('./models/Entry')
 const withAuth = require('./middleware');
 require('dotenv').config();
 
+process.env.PWD = process.cwd()
+
 const app = express();
 
 const secret = 'mysecretsshhh';
@@ -27,13 +29,11 @@ mongoose.connect(process.env.MONGODB_URI || mongo_uri, { useNewUrlParser: true }
   }
 });
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.normalize(path.join(__dirname, 'public'))));
 
 
 app.get('/', function (req, res) {
-  console.log(path.join(__dirname, 'public', 'index.html'));
-  console.log(process.env.PUBLIC_PATH);
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  res.sendFile(path.normalize(path.join(__dirname, 'public', 'index.html')));
 });
 
 app.get('/api/home', function (req, res) {
