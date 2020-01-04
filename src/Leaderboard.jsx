@@ -29,10 +29,10 @@ export default class Leaderboard extends Component {
     let outcome;
     let bg;
     if (entry.setMC > entry.setFJ) {
-      outcome = "MC"
+      outcome = "Marko"
       bg = "#FFBF69"
     } else if (entry.setMC < entry.setFJ) {
-      outcome = "FJ"
+      outcome = "Fredrik"
       bg = "#CBF3F0"
     } else {
       outcome = "Draw"
