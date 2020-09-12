@@ -62,12 +62,12 @@ export default class Leaderboard extends Component {
       bg = '#FFFFFF'
     }
     return <tr key={idx}>
-      <td scope="row" style={{ textAlign: 'center', backgroundColor: bg }}>{date}</td>
-      <th style={{ textAlign: 'center', backgroundColor: bg }}>{entry.setMC} - {entry.setFJ}</th>
-      <th style={{ textAlign: 'center', backgroundColor: bg }}>
+      <td scope="row" style={{ textAlign: 'center', fontSize: '12px', backgroundColor: bg }}>{date}</td>
+      <th style={{ textAlign: 'center', fontSize: '12px', backgroundColor: bg }}>{entry.setMC} - {entry.setFJ}</th>
+      <th style={{ textAlign: 'center', fontSize: '12px', backgroundColor: bg }}>
         {this.getTotalPointsPerPlyerString(totalPointsMC, totalPointsFJ)}
       </th>
-      <td style={{ textAlign: 'center', backgroundColor: bg }}>{outcome}</td>
+      <td style={{ textAlign: 'center', fontSize: '12px', backgroundColor: bg }}>{outcome}</td>
     </tr>
   }
 
@@ -84,20 +84,20 @@ export default class Leaderboard extends Component {
     return (
       <div className='mt-1 ml-1 mr-1'>
         <h1 style={{ textAlign: 'center' }}>Leaderboard</h1>
-        <Table striped bordered hover responsive size="sm">
+        <Table striped bordered hover responsive size="sm" text>
           <thead>
             <tr>
-              <th scope="col" style={{ textAlign: 'center' }}>Date</th>
-              <th scope="col" style={{ textAlign: 'center' }}>Result (MC vs FJ)</th>
-              <th scope="col" style={{ textAlign: 'center' }}>Total points (MC / FJ)</th>
-              <th scope="col" style={{ textAlign: 'center' }}>Winner</th>
+              <th scope="col" style={{ textAlign: 'center', fontSize: '12px' }}>Date</th>
+              <th scope="col" style={{ textAlign: 'center', fontSize: '12px' }}>Result (MC vs FJ)</th>
+              <th scope="col" style={{ textAlign: 'center', fontSize: '12px' }}>Points (MC / FJ)</th>
+              <th scope="col" style={{ textAlign: 'center', fontSize: '12px' }}>Winner</th>
             </tr>
           </thead>
           <tbody>
             {this.populateEntries()}
           </tbody>
         </Table>
-      </div>
+      </div >
     )
   }
 }
