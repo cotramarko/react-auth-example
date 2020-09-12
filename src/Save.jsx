@@ -47,39 +47,6 @@ export default class Save extends Component {
 
   render() {
     return (
-      <form onSubmit={this.onSubmit}>
-        <h1>Save Results</h1>
-        <input
-          type="date"
-          name="date"
-          placeholder="Enter date"
-          value={this.state.date}
-          onChange={this.handleInputChange}
-          required
-        />
-        <input
-          type="number"
-          name="setMC"
-          placeholder="Enter sets for MC"
-          value={this.state.setMC}
-          onChange={this.handleInputChange}
-          required
-        />
-        <input
-          type="number"
-          name="setFJ"
-          placeholder="Enter sets for FJ"
-          value={this.state.setFJ}
-          onChange={this.handleInputChange}
-          required
-        />
-        <input type="submit" value="Submit" />
-      </form>
-    );
-  }
-
-  render() {
-    return (
       <div className='mt-5 ml-5 mr-5'>
         <form onSubmit={this.onSubmit}>
           <h3>Save Results</h3>

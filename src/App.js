@@ -1,12 +1,10 @@
-import React, { Component } from 'react';
-import { Link, Route, Switch } from 'react-router-dom';
-import withAuth from './withAuth';
-import Home from './Home';
-import Login from './Login';
-import Login2 from './Login2';
+import React, { Component } from 'react'
+import { Link, Route, Switch } from 'react-router-dom'
+import withAuth from './withAuth'
+import Login from './Login'
 import Leaderboard from './Leaderboard'
 import Save from './Save'
-
+import Drafts from './Drafts'
 
 class App extends Component {
   render() {
@@ -18,12 +16,12 @@ class App extends Component {
         </ul>
         <Switch>
           <Route path="/" exact component={Leaderboard} />
-          <Route path="/save" component={withAuth(Save)} />
+          <Route path="/save" component={withAuth(Drafts)} />
           <Route path="/login" component={Login} />
         </Switch>
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App
