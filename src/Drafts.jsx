@@ -10,6 +10,7 @@ import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import { Redirect } from 'react-router-dom';
 import { Label } from 'react-bootstrap'
+import LoadingButton from './LoadingButton'
 
 
 export default class Drafts extends Component {
@@ -87,6 +88,19 @@ export default class Drafts extends Component {
         console.error(err);
         //alert('Error logging in please try again');
       })
+  }
+
+  protoSaveDraft(entry) {
+    return fetch('/api/setSets', {
+      method: 'POST',
+      body: JSON.stringify({
+        id: entry._id,
+        sets: entry.sets
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
   }
 
   onSaveDraft(entry) {
@@ -305,13 +319,12 @@ export default class Drafts extends Component {
   addSaveButtons(entry) {
     return <Form.Row>
       <Col style={{ textAlign: "center" }}>
-        <Button
+        <LoadingButton
+          loadingText={"Saving..."}
+          buttonText={"Save Draft"}
           style={{ minWidth: "110px" }}
-          variant={this.state.saveSuccessful ? "outline-primary" : "outline-danger"}
-          onClick={this.onSaveDraft(entry)}
-        >
-          {"Save Draft"}
-        </Button>
+          asyncCall={() => this.protoSaveDraft(entry)}
+        />
       </Col>
       <Col style={{ textAlign: "center" }}>
         <Button

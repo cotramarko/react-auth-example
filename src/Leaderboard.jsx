@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import Table from 'react-bootstrap/Table'
 
 export default class Leaderboard extends Component {
@@ -31,8 +31,23 @@ export default class Leaderboard extends Component {
       })
   }
 
+  getTotalPointsPerPlyer(entry) {
+    const reduceSum = (arr) => arr.reduce((a, b) => a + b, null)
+    const totalPointsMC = reduceSum(entry.sets.map(i => i.pointsMC))
+    const totalPointsFJ = reduceSum(entry.sets.map(i => i.pointsFJ))
+
+    return { totalPointsMC, totalPointsFJ }
+  }
+
+  getTotalPointsPerPlyerString(totalPointsMC, totalPointsFJ) {
+    if (totalPointsMC == null || totalPointsFJ == null) { return 'NA' }
+
+    return `${totalPointsMC} / ${totalPointsFJ}`
+  }
+
   singleEntry(idx, entry) {
     console.log(entry)
+    const { totalPointsMC, totalPointsFJ } = this.getTotalPointsPerPlyer(entry)
     const date = entry.date.split('T')[0]
     let outcome
     let bg
@@ -49,13 +64,15 @@ export default class Leaderboard extends Component {
     return <tr key={idx}>
       <td scope="row" style={{ textAlign: 'center', backgroundColor: bg }}>{date}</td>
       <th style={{ textAlign: 'center', backgroundColor: bg }}>{entry.setMC} - {entry.setFJ}</th>
+      <th style={{ textAlign: 'center', backgroundColor: bg }}>
+        {this.getTotalPointsPerPlyerString(totalPointsMC, totalPointsFJ)}
+      </th>
       <td style={{ textAlign: 'center', backgroundColor: bg }}>{outcome}</td>
     </tr>
   }
 
   populateEntries() {
-    if (this.state.entries.length < 1)
-      return
+    if (this.state.entries.length < 1) { return }
 
     const r = this.state.entries.map(
       (entry, idx) => this.singleEntry(idx, entry)
@@ -72,6 +89,7 @@ export default class Leaderboard extends Component {
             <tr>
               <th scope="col" style={{ textAlign: 'center' }}>Date</th>
               <th scope="col" style={{ textAlign: 'center' }}>Result (MC vs FJ)</th>
+              <th scope="col" style={{ textAlign: 'center' }}>Total points (MC / FJ)</th>
               <th scope="col" style={{ textAlign: 'center' }}>Winner</th>
             </tr>
           </thead>
@@ -82,5 +100,4 @@ export default class Leaderboard extends Component {
       </div>
     )
   }
-
 }
