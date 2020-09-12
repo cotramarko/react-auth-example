@@ -29,7 +29,8 @@ mongoose.connect(process.env.MONGODB_URI || mongoUri, { useNewUrlParser: true },
 })
 
 //app.use(express.static(path.normalize(path.join(__dirname, 'public'))))  // This line is needed for local development
-app.use(express.static(path.join(__dirname, 'build')))  // This line is needed for deploy
+//app.use('/', express.static(path.join(__dirname, 'build')))  // This line is needed for deploy
+app.use('/', express.static(path.normalize(path.join(__dirname, 'build'))))  // This line is needed for local development
 
 app.get('/', function (req, res) {
   res.sendFile(path.resolve(__dirname, 'build', 'index.html'))
