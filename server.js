@@ -40,7 +40,6 @@ app.get('/api/healthcheck', function (req, res) {
   res.send('Hello')
 })
 
-
 app.post('/api/register', function (req, res) {
   const { email, password } = req.body
   const user = new User({ email, password })
@@ -53,7 +52,6 @@ app.post('/api/register', function (req, res) {
     }
   })
 })
-
 
 app.post('/api/entry', withAuth, function (req, res) {
   const { date, setMC, setFJ } = req.body

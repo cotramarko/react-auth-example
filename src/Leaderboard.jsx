@@ -2,13 +2,13 @@ import React, { Component } from 'react'
 import Table from 'react-bootstrap/Table'
 
 export default class Leaderboard extends Component {
-  constructor() {
+  constructor () {
     super()
     this.state = { entries: [] }
     this.getEntries()
   }
 
-  getEntries() {
+  getEntries () {
     fetch('/api/entry', {
       method: 'GET'
     })
@@ -31,7 +31,7 @@ export default class Leaderboard extends Component {
       })
   }
 
-  getTotalPointsPerPlyer(entry) {
+  getTotalPointsPerPlyer (entry) {
     const reduceSum = (arr) => arr.reduce((a, b) => a + b, null)
     const totalPointsMC = reduceSum(entry.sets.map(i => i.pointsMC))
     const totalPointsFJ = reduceSum(entry.sets.map(i => i.pointsFJ))
@@ -39,13 +39,13 @@ export default class Leaderboard extends Component {
     return { totalPointsMC, totalPointsFJ }
   }
 
-  getTotalPointsPerPlyerString(totalPointsMC, totalPointsFJ) {
+  getTotalPointsPerPlyerString (totalPointsMC, totalPointsFJ) {
     if (totalPointsMC == null || totalPointsFJ == null) { return 'NA' }
 
     return `${totalPointsMC} / ${totalPointsFJ}`
   }
 
-  singleEntry(idx, entry) {
+  singleEntry (idx, entry) {
     console.log(entry)
     const { totalPointsMC, totalPointsFJ } = this.getTotalPointsPerPlyer(entry)
     const date = entry.date.split('T')[0]
@@ -71,7 +71,7 @@ export default class Leaderboard extends Component {
     </tr>
   }
 
-  populateEntries() {
+  populateEntries () {
     if (this.state.entries.length < 1) { return }
 
     const r = this.state.entries.map(
@@ -80,7 +80,7 @@ export default class Leaderboard extends Component {
     return r
   }
 
-  render() {
+  render () {
     return (
       <div className='mt-1 ml-1 mr-1'>
         <h1 style={{ textAlign: 'center' }}>Leaderboard</h1>

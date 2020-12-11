@@ -1,23 +1,23 @@
 import React, { Component } from 'react'
-import { Link, Route, Switch } from 'react-router-dom'
+import { Link, Route, Switch, Redirect } from 'react-router-dom'
 import withAuth from './withAuth'
 import Login from './Login'
 import Leaderboard from './Leaderboard'
-import Save from './Save'
 import Drafts from './Drafts'
+import ButtonAppBar from './Navbar'
 
 class App extends Component {
-  render() {
+  render () {
     return (
       <div>
-        <ul>
-          <li><Link to="/">Leaderboard</Link></li>
-          <li><Link to="/save">Add Results</Link></li>
-        </ul>
+        <ButtonAppBar />
         <Switch>
           <Route path="/" exact component={Leaderboard} />
           <Route path="/save" component={withAuth(Drafts)} />
           <Route path="/login" component={Login} />
+          {
+            // <Route path="/l2" exact component={CollapsibleTable} />
+          }
         </Switch>
       </div>
     )
